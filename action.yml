@@ -32,5 +32,5 @@ runs:
         soteria ${{ inputs.options }} ${{ inputs.buildPath }}
       shell: bash
     - run: |
-        coderrect -publish.cloud="DEFAULT" -publish.exit0=${{ inputs.exit0 }}
+        coderrect -publish.exit0=${{ inputs.exit0 }}
       shell: bash
