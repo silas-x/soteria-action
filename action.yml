@@ -1,18 +1,15 @@
 name: Soteria Scan
 description: Test Solana smart contracts for common issues
 inputs:
-  SOLANA_VERSION:
-    description: "Solana version used for the build process"
-    required: false
-    default: "1.9.1"
-  buildPath:
-    description: "The relative path for your build directory"
-    required: false
-    default: "."
   options:
     description: "Command line options for Coderrect Scanner"
     required: false
     default: "-analyzeAll"
+  buildPath:
+    description: "The relative path for your build directory"
+    required: false
+    default: "."
+
 runs:
   using: composite
   steps:
@@ -29,6 +26,5 @@ runs:
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
     - run: |
-        cd ${{ inputs.buildPath }}
-        soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
+        soteria ${{ inputs.options }} ${{ inputs.buildPath }}
       shell: bash
