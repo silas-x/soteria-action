@@ -9,7 +9,10 @@ inputs:
     description: "The relative path for your build directory"
     required: false
     default: "."
-
+  exit0:
+    description: "Force Soteria to exit with 0 even when issues are detected"
+    required: false
+    default: false
 runs:
   using: composite
   steps:
@@ -27,4 +30,7 @@ runs:
       shell: bash
     - run: |
         soteria ${{ inputs.options }} ${{ inputs.buildPath }}
+      shell: bash
+    - run: |
+        soteria -publish.cloud="DEFAULT" -publish.exit0=${{ inputs.exit0 }}
       shell: bash
