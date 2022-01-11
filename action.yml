@@ -14,7 +14,7 @@ inputs:
 runs:
   using: composite
   steps:
-      - run: | 
+    - run: | 
         sh -c "$(curl -sSfL https://release.solana.com/v${{ env.SOLANA_VERSION }}/install)"
         echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
         export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
