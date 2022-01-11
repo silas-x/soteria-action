@@ -12,6 +12,10 @@ inputs:
     description: "The relative path for your build directory"
     required: false
     default: "."
+  cleanCommand:
+    description: "Custom clean command"
+    required: false
+    default: "make clean || true"
   exit0:
     description: "Force Soteria to exit with 0 even when issues are detected"
     required: false
@@ -24,12 +28,13 @@ runs:
         echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
         export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
         cargo build-bpf
-          solana-keygen new -o "$HOME/.config/solana/id.json" --no-passphrase --silent
+        solana-keygen new -o "$HOME/.config/solana/id.json" --no-passphrase --silent
       shell: bash
     - run: | 
         sh -c "$(curl -k https://supercompiler.xyz/install)"
         export PATH=$PWD/soteria-linux-develop/bin/:$PATH
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
+        ${{ inputs.cleanCommand }}
       shell: bash
     - run: |
         soteria ${{ inputs.options }} ${{ inputs.buildPath }}
