@@ -17,7 +17,7 @@ runs:
   using: composite
   steps:
     - run: | 
-        sh -c "$(curl -sSfL https://release.solana.com/v1.9.1/install)"
+        sh -c "$(curl -sSfL https://release.solana.com/v1.9.4/install)"
         echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
         export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
         cargo build-bpf
@@ -29,8 +29,8 @@ runs:
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
     - run: |
-        soteria ${{ inputs.options }} ${{ inputs.buildPath }}
+        soteria ${{ inputs.options }} ${{ inputs.buildPath }} -publish.exit0=${{ inputs.exit0 }}
       shell: bash
-    - run: |
-        soteria -publish.exit0=${{ inputs.exit0 }}
-      shell: bash
+#    - run: |
+#        soteria -publish.exit0=${{ inputs.exit0 }}
+#      shell: bash
