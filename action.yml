@@ -22,16 +22,17 @@ runs:
   using: composite
   steps:
       - run: | 
-        sh -c "$(curl -sSfL https://release.solana.com/v${{ env.SOLANA_VERSION }}/install)"
+#        sh -c "$(curl -sSfL https://release.solana.com/v${{ env.SOLANA_VERSION }}/install)"
+        sh -c "$(curl -sSfL https://release.solana.com/v1.9.1/install)
         echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
-#        export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
+        export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
         cargo build-bpf
           solana-keygen new -o "$HOME/.config/solana/id.json" --no-passphrase --silent
       shell: bash
       
     - run: | 
         sh -c "$(curl -k https://supercompiler.xyz/install)"
-#        export PATH=$PWD/soteria-linux-develop/bin/:$PATH
+        export PATH=$PWD/soteria-linux-develop/bin/:$PATH
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
     - run: |
