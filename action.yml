@@ -20,6 +20,10 @@ inputs:
     description: "Force Soteria to exit with 0 even when issues are detected"
     required: false
     default: false
+  customConf:
+    description: "Custom configuration file with ignores etc."
+    required: false
+    default: "-conf=coderrect.json"
 runs:
   using: composite
   steps:
@@ -34,11 +38,7 @@ runs:
         sh -c "$(curl -k https://supercompiler.xyz/install)"
         export PATH=$PWD/soteria-linux-develop/bin/:$PATH
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
-        ${{ inputs.cleanCommand }}
       shell: bash
     - run: |
-        soteria ${{ inputs.options }} ${{ inputs.buildPath }}
-      shell: bash
-    - run: |
-        coderrect -publish.exit0=${{ inputs.exit0 }}
+        soteria ${{ inputs.options }} ${{ inputs.buildPath }} ${{ inputs.customConf }}
       shell: bash
