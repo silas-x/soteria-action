@@ -2,6 +2,7 @@ name: Soteria Scan
 description: Test Solana smart contracts for common issues
 env:
   SOLANA_VERSION: "1.9.1"
+  RUST_TOOLCHAIN: nightly-2021-12-15
 inputs:
   buildPath:
     description: "The relative path for your build directory"
