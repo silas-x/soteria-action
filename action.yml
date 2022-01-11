@@ -1,0 +1,14 @@
+name: Soteria Scan
+description: >
+  Test Solana smart contracts for common issues
+branding:
+  icon: check
+  color: green
+
+
+env:
+  CARGO_TERM_COLOR: always
+  SOLANA_VERSION: "1.9.1"
+  RUST_TOOLCHAIN: nightly-2021-12-15
+  
+  
