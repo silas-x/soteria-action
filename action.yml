@@ -28,6 +28,3 @@ runs:
     - run: |
         soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
       shell: bash
-    - run: |
-        browse /home/runner/work/voter-stake-registry/voter-stake-registry/.coderrect/report/index.html
-      shell: bash
