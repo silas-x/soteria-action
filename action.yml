@@ -15,7 +15,7 @@ inputs:
   customConf:
     description: "Supply your custom configuration"
     required: false
-    default: "coderrect.json"
+    default: "-coderrect.json"
   exit0:
     description: "Force Soteria to exit with 0 even when issues are detected"
     required: false
