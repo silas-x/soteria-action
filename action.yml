@@ -5,8 +5,12 @@ branding:
   icon: truck
   color: green
 inputs:
+   solanaVersion:
+    description: "Choose your Solana version to build with"
+    required: false
+    default: "1.9.4"
   options:
-    description: "Command line options for Coderrect Scanner"
+    description: "Command line options for Soteria"
     required: false
     default: "-analyzeAll"
   buildCommand:
@@ -18,13 +22,16 @@ runs:
   using: composite
   steps:
     - run: | 
-        sh -c "$(curl -sSfL https://release.solana.com/v1.9.4/install)"
+        echo Installing Solana v${{ inputs.solanaVersion }}
+        sh -c "$(curl -sSfL https://release.solana.com/v${{ inputs.solanaVersion }}/install)"
         echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
         export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
+        echo Installing bpf SDK...
         cargo build-bpf
         solana-keygen new -o "$HOME/.config/solana/id.json" --no-passphrase --silent
       shell: bash
     - run: | 
+        echo Installing Soteria...
         sh -c "$(curl -k https://supercompiler.xyz/install)"
         export PATH=$PWD/soteria-linux-develop/bin/:$PATH
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
@@ -33,6 +40,7 @@ runs:
         soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
       shell: bash
     - run: |
+        echo Checking scan results...
         if grep -q "No vulnerabilities detected"; then
           echo Passing job with no vulnerabilities found
           exit 0
