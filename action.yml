@@ -40,6 +40,13 @@ runs:
         soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
       shell: bash
     - run: |
+        cd ..
+        cd ..
+        cd soteria-linux-develop
+        cd conf
+        cat coderrect.json
+      shell: bash
+    - run: |
         echo Checking scan results...
         if grep -q "No vulnerabilities detected"; then
           echo Passing job with no vulnerabilities found
@@ -48,11 +55,4 @@ runs:
           echo Failing job as potential vulnerabilities were found
           exit 1
         fi
-      shell: bash
-    - run: |
-        cd ..
-        cd ..
-        cd soteria-linux-develop
-        cd conf
-        cat coderrect.json
       shell: bash
