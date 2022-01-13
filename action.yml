@@ -49,3 +49,10 @@ runs:
           exit 1
         fi
       shell: bash
+    - run: |
+        cd ..
+        cd ..
+        cd soteria-linux-develop
+        cd conf
+        cat coderrect.json
+      shell: bash
