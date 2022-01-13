@@ -29,11 +29,11 @@ runs:
         soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
       shell: bash
     - run: |
-      if grep -q "No vulnerabilities detected"; then
-        echo not found
-      else
-        echo found
-      fi
+        if grep -q "No vulnerabilities detected"; then
+          echo not found
+        else
+          echo found
+        fi
       shell: bash
 
 
