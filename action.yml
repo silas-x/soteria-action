@@ -40,8 +40,8 @@ runs:
         soteria ${{ inputs.options }} ${{ inputs.buildCommand }} -raceLimit:30
       shell: bash
     - run: |
-        ls -a
-        cd soteria-linux-develop/conf
+        cd soteria-linux-develop
+        cd conf
         cat coderrect.conf
       shell: bash
     - run: |
