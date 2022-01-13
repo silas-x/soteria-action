@@ -29,5 +29,5 @@ runs:
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
     - run: |
-        soteria ${{ inputs.options }} ${{ inputs.buildCommand }} ${{ inputs.buildConf }}
+        soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
       shell: bash
