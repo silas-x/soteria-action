@@ -12,7 +12,10 @@ You can use this action as part of your project by creating an Action as follows
 ```
 name: Soteria Scan
 on:
-  workflow_dispatch:
+  push:
+    branches: main
+  pull_request:
+    branches: main
 
 jobs:
   build:
@@ -22,6 +25,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Soteria Scan
         uses: silas-x/soteria-action@main
+        with:
+          solanaVersion:"1.9.4"
+          options:"-analyzeAll"
+          buildCommand:"."
  ```
  
  Note: I am not the author of Soteria. I can't answer support questions related to the tool and I take no responsibility of the accuracy of it, 
