@@ -5,7 +5,7 @@ branding:
   icon: truck
   color: green
 inputs:
-   solanaVersion:
+  solanaVersion:
     description: "Choose your Solana version to build with"
     required: false
     default: "1.9.4"
