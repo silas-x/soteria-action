@@ -30,9 +30,9 @@ runs:
       shell: bash
     - run: |
         if grep -q "No vulnerabilities detected"; then
-          echo not found
+          exit 0
         else
-          echo found
+          exit 1
         fi
       shell: bash
 
