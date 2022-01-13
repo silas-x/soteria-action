@@ -12,10 +12,10 @@ inputs:
     description: "The relative path for your build directory"
     required: false
     default: "."
-  cleanCommand:
-    description: "Custom clean command"
+  customConf:
+    description: "Supply your custom configuration"
     required: false
-    default: "make clean || true"
+    default: "coderrect.json"
   exit0:
     description: "Force Soteria to exit with 0 even when issues are detected"
     required: false
@@ -36,5 +36,5 @@ runs:
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
     - run: |
-        soteria -noprogress ${{ inputs.options }} ${{ inputs.buildPath }} -conf=../../../../coderrect.json
+        soteria ${{ inputs.options }} ${{ inputs.customConf }} ${{ inputs.buildPath }}
       shell: bash
