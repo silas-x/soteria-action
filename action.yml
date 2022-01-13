@@ -42,7 +42,7 @@ runs:
     - run: |
         cd soteria-linux-develop
         cd conf
-        cat coderrect.conf
+        cat coderrect.json
       shell: bash
     - run: |
         echo Checking scan results...
