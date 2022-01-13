@@ -4,15 +4,11 @@ inputs:
   options:
     description: "Command line options for Coderrect Scanner"
     required: false
-    default: "-analyzeAll"
+    default: "-analyzeAll -ignoreRacesAtLocations["deposit_entry.rs:329"]"
   buildCommand:
     description: "Build command shortcut for: cargo +bpf build --target bpfel-unknown-unknown --release"
     required: false
     default: "."
-  buildConf:
-    description: "Custom config input option"
-    required: false
-    default: "-conf=coderrect.json"
 runs:
   using: composite
   steps:
