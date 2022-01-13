@@ -9,6 +9,10 @@ inputs:
     description: "Build command shortcut for: cargo +bpf build --target bpfel-unknown-unknown --release"
     required: false
     default: "."
+  exit0:
+    description: "Force Coderrect to exit with 0 even when races are detected"
+    required: false
+    default: false
 runs:
   using: composite
   steps:
@@ -25,5 +29,5 @@ runs:
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
     - run: |
-        soteria ${{ inputs.options }} ${{ inputs.buildCommand }} -ignoreRacesAtLocations["$GITHUB_PATH/programs/voter-stake-registry/src/state/deposit_entry.rs/deposit_entry.rs:329"]
+        soteria ${{ inputs.options }} ${{ inputs.buildCommand }} -publish.exit0=${{ inputs.exit0 }}
       shell: bash
