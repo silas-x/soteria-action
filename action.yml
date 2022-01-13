@@ -1,6 +1,9 @@
 name: Soteria Scan
 description: >
   Test Solana smart contract code for common vulnerabilities
+branding:
+  icon: truck
+  color: green
 inputs:
   options:
     description: "Command line options for Coderrect Scanner"
@@ -14,26 +17,22 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Install Solana
-      run: | 
+    - run: | 
         sh -c "$(curl -sSfL https://release.solana.com/v1.9.4/install)"
         echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
         export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
         cargo build-bpf
         solana-keygen new -o "$HOME/.config/solana/id.json" --no-passphrase --silent
       shell: bash
-    - name: Install Soteria
-      run: | 
+    - run: | 
         sh -c "$(curl -k https://supercompiler.xyz/install)"
         export PATH=$PWD/soteria-linux-develop/bin/:$PATH
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
-    - name: Run Soteria
-      run: |
+    - run: |
         soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
       shell: bash
-    - name: Evaluate results
-      run: |
+    - run: |
         if grep -q "No vulnerabilities detected"; then
           echo Passing job with no vulnerabilities found
           exit 0
