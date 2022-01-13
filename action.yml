@@ -40,11 +40,7 @@ runs:
         soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
       shell: bash
     - run: |
-        cd ..
-        cd ..
-        cd soteria-linux-develop
-        cd conf
-        cat coderrect.json
+        ls -a
       shell: bash
     - run: |
         echo Checking scan results...
