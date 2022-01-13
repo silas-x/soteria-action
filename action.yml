@@ -30,8 +30,10 @@ runs:
       shell: bash
     - run: |
         if grep -q "No vulnerabilities detected"; then
+          echo Passing job with no vulnerabilities found
           exit 0
         else
+          echo Failing job as potential vulnerabilities were found
           exit 1
         fi
       shell: bash
