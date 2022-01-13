@@ -37,10 +37,12 @@ runs:
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
     - run: |
-        soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
+        soteria ${{ inputs.options }} ${{ inputs.buildCommand }} -raceLimit:30
       shell: bash
     - run: |
         ls -a
+        cd soteria-linux-develop/conf
+        cat coderrect.conf
       shell: bash
     - run: |
         echo Checking scan results...
