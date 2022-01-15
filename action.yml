@@ -1,4 +1,5 @@
 name: Soteria Scan
+author: Silas
 description: >
   Test Solana smart contract code for common vulnerabilities
 branding:
@@ -45,10 +46,10 @@ runs:
       shell: bash
     - run: |
         echo Checking scan results...
-        if {{ inputs.neverFail}} = true; then
+        if {{ inputs.neverFail }} = true; then
           echo The job passed as it was set to never fail!
           exit 0
-        elif {{ inputs.neverFail}} = false && grep -q "No vulnerabilities detected"; then
+        elif {{ inputs.neverFail }} = false && grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
           exit 0
         else
