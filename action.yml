@@ -10,11 +10,11 @@ inputs:
     description: "Choose your Solana version to build with"
     required: false
     default: "1.9.4"
-  options:
+  runMode:
     description: "Command line options for Soteria"
     required: false
     default: "-analyzeAll"
-  buildCommand:
+  cargoCom:
     description: "Build command shortcut for: cargo +bpf build --target bpfel-unknown-unknown --release"
     required: false
     default: "."
@@ -45,11 +45,12 @@ runs:
         soteria ${{ inputs.options }} ${{ inputs.buildCommand }}
       shell: bash
     - run: |
+        x = ${{ inputs.neverFail }}
         echo Checking scan results...
-        if {{ inputs.neverFail }} = true; then
+        if x = true; then
           echo The job passed as it was set to never fail!
           exit 0
-        elif {{ inputs.neverFail }} = false && grep -q "No vulnerabilities detected"; then
+        elif x = false && grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
           exit 0
         else
