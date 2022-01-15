@@ -44,9 +44,11 @@ runs:
     - run: |
         soteria ${{ inputs.runMode }} ${{ inputs.cargoCom }}
       shell: bash
-    - run: echo The job passed as it was set to never fail!
-      run: exit 0
-      if: ${{ inputs.neverFail == true}}     
+    - if: ${{ inputs.neverFail == true}} 
+      run: |
+          echo The job passed as it was set to never fail!
+          exit 0
+      shell: bash  
     - run: |
         if grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
