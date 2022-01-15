@@ -47,10 +47,10 @@ runs:
     - run: |
         x = ${{ inputs.neverFail }}
         echo Checking scan results...
-        if x = true; then
+        if $x = "true"; then
           echo The job passed as it was set to never fail!
           exit 0
-        elif x = false && grep -q "No vulnerabilities detected"; then
+        elif $x = "false" && grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
           exit 0
         else
