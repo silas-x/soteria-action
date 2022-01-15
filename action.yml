@@ -20,7 +20,7 @@ inputs:
   neverFail:
     description: "Configure the job to pass even if potential vulnerabilities are discovered"
     required: false
-    default: "1"
+    default: false
 
 runs:
   using: composite
@@ -45,12 +45,15 @@ runs:
       shell: bash
     - run: |
         echo Checking scan results...
+        if ${{ inputs.neverFail }}=true; then
+          echo The job passed as it was set to never fail!
+          exit 0
         if grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
           exit 0
         else
           echo The job failed as potential vulnerabilities were found!
           echo If you configured the job to never fail, you may see this message while the job still passed.
-          exit ${{ inputs.neverFail }}
+          exit 1
         fi
       shell: bash
