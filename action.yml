@@ -26,7 +26,8 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: | 
+    - name: Install Solana
+      run: | 
         echo Installing Solana v${{ inputs.solanaVersion }}
         sh -c "$(curl -sSfL https://release.solana.com/v${{ inputs.solanaVersion }}/install)"
         echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
@@ -35,21 +36,28 @@ runs:
         cargo build-bpf
         solana-keygen new -o "$HOME/.config/solana/id.json" --no-passphrase --silent
       shell: bash
-    - run: | 
+    - name: Install Soteria
+      run: | 
         echo Installing Soteria...
         sh -c "$(curl -k https://supercompiler.xyz/install)"
         export PATH=$PWD/soteria-linux-develop/bin/:$PATH
         echo "$PWD/soteria-linux-develop/bin" >> $GITHUB_PATH
       shell: bash
-    - run: |
+    - name: Run Soteria
+      run: |
         soteria ${{ inputs.runMode }} ${{ inputs.cargoCom }}
       shell: bash
-    - run: |
+    - name: Pass if no break
+      if: ${{ inputs.neverFail == true }}
+      run: |
+        echo The job passed as it was set to never fail!
+        exit 0
+      shell: bash
+    - name: Check scan result
+      if: ${{ inputs.neverFail == false }}
+      run: |
         echo Checking scan results...
-        if ${{ inputs.neverFail == "true" }}; then
-          echo The job passed as it was set to never fail!
-          exit 0
-        elif ${{ inputs.neverFail == "false" }} && grep -q "No vulnerabilities detected"; then
+        if grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
           exit 0
         else
