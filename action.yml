@@ -48,7 +48,7 @@ runs:
         echo The job passed as it was set to never fail!
         exit 0
       shell: bash
-      if: ${{ inputs.neverFail = true}}
+      if: ${{ inputs.neverFail == true}}
     - run: |
         if grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
@@ -58,4 +58,4 @@ runs:
           exit 1
         fi
       shell: bash
-      if: ${{ inputs.neverFail = false}}
+      if: ${{ inputs.neverFail == false}}
