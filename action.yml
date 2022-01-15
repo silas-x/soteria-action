@@ -48,13 +48,13 @@ runs:
         soteria ${{ inputs.runMode }} ${{ inputs.cargoCom }}
       shell: bash
     - name: Pass if no break
-      if: ${{ inputs.neverFail == true }}
+      if: ${{ inputs.neverFail == 'true' }}
       run: |
         echo The job passed as it was set to never fail!
         exit 0
       shell: bash
     - name: Check scan result
-      if: ${{ inputs.neverFail == false }}
+      if: ${{ inputs.neverFail == 'false' }}
       run: |
         echo Checking scan results...
         if grep -q "No vulnerabilities detected"; then
