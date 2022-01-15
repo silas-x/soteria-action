@@ -3,8 +3,8 @@ author: Silas
 description: >
   Test Solana smart contract code for common vulnerabilities
 branding:
-  icon: truck
-  color: green
+  icon: check-square
+  color: gray-dark
 inputs:
   solanaVersion:
     description: "Choose your Solana version to build with"
