@@ -56,7 +56,7 @@ jobs:
     ]
  }
  ```
- ## Feedback :fist_right::left:
+ ## Feedback :fist_right::fist_left:
  Please raise an issue for suggestions and any bugs related to the Action.
  
  If you feel this Action has helped your project, donations are welcome to this SOL address: _Db4eiNsEXQ5gUZsxGWchj39CXQZ1ZGuuaS4MdSobVhtT_
