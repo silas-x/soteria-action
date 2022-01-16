@@ -5,16 +5,17 @@ This action enables you to run the Solana smart contract vulnerability scanning 
 The action takes the following inputs, but note that they are not required. 
 If this is new to you, just run the action without passing any arguments!
 ```
-solanaVersion (default: 1.9.4) - Check Solana releases if needed
-runMode (default: -analyseAll) - Runs the tool against all contracts
-cargoCom (default: .) - Shortcut Cargo build command
-neverFail (default: false) - Set to true if you don't want to fail a job
+solanaVersion (default: 1.9.4)        - Check Solana releases if needed
+runMode       (default: -analyseAll)  - Runs the tool against all contracts
+cargoCom      (default: .)            - Shortcut Cargo build command
+neverFail     (default: false)        - Set to true if you don't want to fail a job
 ```
 
 ## Running the Action in your repository
 You can use this action as part of your project by creating an Action as follows:
 ```
 name: Soteria Scan
+# Update this to match your branch names and requirements
 on:
   push:
     branches: main
@@ -24,9 +25,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Check-out the repository
+        uses: actions/checkout@v2
       - name: Soteria Scan
         uses: silas-x/soteria-action@main
         with:                    // remove if not passing arguments below
@@ -53,9 +54,10 @@ jobs:
   "ignoreRacesInFunctions": [
         "fn"
     ]
-}
-```
+ }
+ ```
 
- Note: I am not the author of Soteria. I can't answer support questions related to the tool and I take no responsibility of the accuracy of it, 
+ ## Note 
+ I am not the author of Soteria. I can't answer support questions related to the tool and I take no responsibility of the accuracy of it, 
  or the outcomes of running this action. You should not solely rely on the the results of running this tool, as no tool will be able to
- provide assurance of security or completeness of a smart contract.
+ provide assurance of security or completeness of a smart contract. Use at own risk.
