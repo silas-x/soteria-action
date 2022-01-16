@@ -60,4 +60,4 @@ jobs:
  ## Note 
  I am not the author of Soteria. I can't answer support questions related to the tool and I take no responsibility of the accuracy of it, 
  or the outcomes of running this action. You should not solely rely on the the results of running this tool, as no tool will be able to
- provide assurance of security or completeness of a smart contract. Use at own risk.
+ provide assurance of security or completeness of a smart contract. Use at own risk and see licence note for further information.
