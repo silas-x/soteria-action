@@ -29,12 +29,12 @@ jobs:
       - name: Check-out the repository
         uses: actions/checkout@v2
       - name: Soteria Scan
-        uses: silas-x/soteria-action@main
-        with:                    // remove if not passing arguments below
-          solanaVersion: "1.9.4" // not required
-          runMode: "-analyzeAll" // not required
-          cargoCom: "."          // not required
-          neverFail: "false"     // not required
+        uses: silas-x/soteria-action@v1
+        with:                    # remove if not passing arguments below
+          solanaVersion: "1.9.4" # not required
+          runMode: "-analyzeAll" # not required
+          cargoCom: "."          # not required
+          neverFail: "false"     # not required
  ```
  
  ## Managing false positives :space_invader:
