@@ -1,0 +1,16 @@
+// Use this file to configure ignores for Soteria.
+// Ignores can be configured based on line number, variable name and function names.
+//
+// Example:
+{
+  "ignoreRacesAtLocations": [
+        "fileNameA.rs:123",
+        "fileNameB.rs:321"
+    ],
+  "ignoreRaceVariables": [
+        "var"
+    ],
+  "ignoreRacesInFunctions": [
+        "fn"
+    ]
+}
