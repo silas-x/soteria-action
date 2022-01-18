@@ -50,6 +50,7 @@ runs:
       shell: bash
     - name: Run Soteria
       run: |
+        cd ${{ inputs.program-path }}
         soteria ${{ inputs.run-mode }} ${{ inputs.cargo-com }}
       shell: bash
     - name: Pass if no break
