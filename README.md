@@ -5,10 +5,11 @@ This action enables you to run the Solana smart contract vulnerability scanning 
 The action takes the following inputs, but note that they are not required. 
 If this is new to you, just run the action without passing any arguments!
 ```
-solanaVersion (default: 1.9.4)        - Check Solana releases if needed
-runMode       (default: -analyseAll)  - Runs the tool against all contracts
-cargoCom      (default: .)            - Shortcut Cargo build command
-neverFail     (default: false)        - Set to true if you don't want to fail a job
+solana-version (default: 1.9.4)        - Check Solana releases if needed
+run-mode       (default: -analyseAll)  - Runs the tool against all contracts
+cargo-com      (default: .)            - Shortcut Cargo build command
+never-fail     (default: false)        - Set to true if you don't want to fail a job
+program-path   (default: .)            - Add path to a program if cargo.toml isn't in the repo root
 ```
 
 ## Running the Action in GitHub CI :infinity:
@@ -31,10 +32,11 @@ jobs:
       - name: Soteria Scan
         uses: silas-x/soteria-action@v1
         with:                    # remove if not passing arguments below
-          solanaVersion: "1.9.4" # not required
-          runMode: "-analyzeAll" # not required
-          cargoCom: "."          # not required
-          neverFail: "false"     # not required
+          solana-version: "1.9.4" # not required
+          run-mode: "-analyzeAll" # not required
+          cargo-com: "."          # not required
+          never-fail: "false"     # not required
+          program-path: "."       # not required
  ```
  
  ## Managing false positives :space_invader:
