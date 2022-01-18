@@ -62,6 +62,7 @@ runs:
     - name: Check scan result
       if: ${{ inputs.never-fail == 'false' }}
       run: |
+        cd ${{ inputs.program-path }}
         echo Checking scan results...
         cat soteria-log.txt
         if soteria-log.txt | grep -q "No vulnerabilities detected"; then
