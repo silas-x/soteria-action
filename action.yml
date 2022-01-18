@@ -6,30 +6,34 @@ branding:
   icon: check-square
   color: gray-dark
 inputs:
-  solanaVersion:
+  solana-version:
     description: "Choose your Solana version to build with"
     required: false
     default: "1.9.4"
-  runMode:
+  run-mode:
     description: "Command line options for Soteria"
     required: false
     default: "-analyzeAll"
-  cargoCom:
+  cargo-com:
     description: "Build command shortcut for: cargo +bpf build --target bpfel-unknown-unknown --release"
     required: false
     default: "."
-  neverFail:
+  never-fail:
     description: "Configure the job to pass even if potential vulnerabilities are discovered"
     required: false
     default: false
+  program-path:
+    description: "Configure the job to run tests against a program in a subfolder to the root"
+    required: false
+    default: "."
 
 runs:
   using: composite
   steps:
     - name: Install Solana
       run: | 
-        echo Installing Solana v${{ inputs.solanaVersion }}
-        sh -c "$(curl -sSfL https://release.solana.com/v${{ inputs.solanaVersion }}/install)"
+        echo Installing Solana v${{ inputs.solana-version }}
+        sh -c "$(curl -sSfL https://release.solana.com/v${{ inputs.solana-version }}/install)"
         echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
         export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
         echo Installing bpf SDK...
@@ -45,16 +49,17 @@ runs:
       shell: bash
     - name: Run Soteria
       run: |
-        soteria ${{ inputs.runMode }} ${{ inputs.cargoCom }}
+        cd ${{ inputs.program-path }}
+        soteria ${{ inputs.run-mode }} ${{ inputs.cargo-com }}
       shell: bash
     - name: Pass if no break
-      if: ${{ inputs.neverFail == 'true' }}
+      if: ${{ inputs.never-fail == 'true' }}
       run: |
         echo The job passed as it was set to never fail!
         exit 0
       shell: bash
     - name: Check scan result
-      if: ${{ inputs.neverFail == 'false' }}
+      if: ${{ inputs.never-fail == 'false' }}
       run: |
         echo Checking scan results...
         if grep -q "No vulnerabilities detected"; then
