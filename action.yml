@@ -63,7 +63,7 @@ runs:
       if: ${{ inputs.never-fail == 'false' }}
       run: |
         echo Checking scan results...
-        if grep -q "No vulnerabilities detected"; then
+        if soteria ${{ inputs.run-mode }} ${{ inputs.cargo-com }} | grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
           exit 0
         else
