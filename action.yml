@@ -52,18 +52,18 @@ runs:
       run: |
         cd ${{ inputs.program-path }}
         soteria ${{ inputs.run-mode }} ${{ inputs.cargo-com }}
-      shell: bash
+
     - name: Pass if no break
       if: ${{ inputs.never-fail == 'true' }}
       run: |
         echo The job passed as it was set to never fail!
         exit 0
-      shell: bash
+
     - name: Check scan result
       if: ${{ inputs.never-fail == 'false' }}
       run: |
         echo Checking scan results...
-        if soteria ${{ inputs.run-mode }} ${{ inputs.cargo-com }} | grep -q "No vulnerabilities detected"; then
+        if grep -q "No vulnerabilities detected"; then
           echo The job passed as no vulnerabilities were found!
           exit 0
         else
