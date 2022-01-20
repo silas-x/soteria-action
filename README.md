@@ -8,7 +8,6 @@ If this is new to you, just run the action without passing any arguments!
 solana-version (default: "1.9.4")        - Check Solana releases if needed
 run-mode       (default: -"analyseAll")  - Runs the tool against all contracts
 cargo-com      (default: ".")            - Shortcut Cargo build command
-never-fail     (default: false)          - Set to true if you don't want to fail a job
 program-path   (default: ".")            - Add path to a program if cargo.toml isn't in the repo root
 ```
 
@@ -30,12 +29,12 @@ jobs:
       - name: Check-out the repository
         uses: actions/checkout@v2
       - name: Soteria Scan
-        uses: silas-x/soteria-action@v1
-        with:                    # remove if not passing arguments below
+        continue-on-error: false  # set to true if you don't want to fail jobs
+        uses: silas-x/soteria-action@main
+        with:                     # remove if not passing arguments below
           solana-version: "1.9.4" # not required
           run-mode: "-analyzeAll" # not required
           cargo-com: "."          # not required
-          never-fail: "false"     # not required
           program-path: "."       # not required
  ```
  
