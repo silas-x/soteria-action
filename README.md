@@ -8,7 +8,7 @@ If this is new to you, just run the action without passing any arguments!
 solana-version (default: "1.9.5")        - Check Solana releases if needed
 run-mode       (default: -"analyseAll")  - Runs the tool against all contracts
 cargo-com      (default: ".")            - Shortcut Cargo build command
-program-path   (default: ".")            - Add path to a program if cargo.toml isn't in the repo root
+program-path   (default: ".")            - Add path to a specific program / path
 ```
 
 ## Running the Action in GitHub CI :infinity:
