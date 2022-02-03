@@ -1,5 +1,5 @@
 # GitHub Action for Soteria
-This action enables you to run the Solana smart contract vulnerability scanning tool Soteria as part of your CI/CD pipeline.
+This action enables you to run the Solana smart contract vulnerability scanning tool Soteria as part of your CI/CD pipeline in the simplest possible way. There are several ways you can optimise the job and tweak it, but this action aims to make things easy!
 
 ## Action inputs :ballot_box:
 The action takes the following inputs, but note that they are not required. 
@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Soteria Scan
         continue-on-error: false  # set to true if you don't want to fail jobs
-        uses: silas-x/soteria-action@main
+        uses: silas-x/soteria-action@v0.2
         with:                     # remove if not passing arguments below
           solana-version: "1.9.4" # not required
           run-mode: "-analyzeAll" # not required
@@ -40,23 +40,11 @@ jobs:
  
  ## Managing false positives :space_invader:
  The tool may identify potential issues that you accept as they are to e.g. save compute cycles, or genuine false positives.
- Ignores can be configured by adding a file name coderrect.json in the root folder of the repository you are scanning,
- and in json format, configure your ignores. They can be based on line number, variable or function as shown below:
+ Ignores can be configured by adding the below annotation to the line above the line you are wanting to ignore:
  ```
- // Example coderrect.json file located in the root folder
- {
-  "ignoreRacesAtLocations": [
-        "fileNameA.rs:123",
-        "fileNameB.rs:321"
-    ],
-  "ignoreRaceVariables": [
-        "var"
-    ],
-  "ignoreRacesInFunctions": [
-        "fn"
-    ]
- }
+//#[soteria(ignore)]
  ```
+ 
  ## Feedback :fist_right::fist_left:
  Please raise an issue for suggestions and any bugs related to the Action.
  
@@ -66,6 +54,6 @@ jobs:
 
  ## Responsibility :call_me_hand:
  I am not the author of Soteria. I can't answer support questions related to the tool and I take no responsibility of the accuracy of it, 
- or the outcomes of running this action. You should not solely rely on the the results of running this tool, as no tool will be able to
+ or the outcomes of running this Action. You should not solely rely on the the results of running this tool, as no tool will be able to
  provide assurance of security or completeness of a smart contract. Use at own risk and see licence note for further information.
 
