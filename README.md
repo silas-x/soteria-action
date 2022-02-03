@@ -6,7 +6,7 @@ The action takes the following inputs, but note that they are not required.
 If this is new to you, just run the action without passing any arguments!
 ```
 solana-version (default: "1.9.5")        - Check Solana releases if needed
-run-mode       (default: -"analyseAll")  - Runs the tool against all contracts
+run-mode       (default: "-analyseAll")  - Runs the tool against all contracts
 cargo-com      (default: ".")            - Shortcut Cargo build command
 program-path   (default: ".")            - Add path to a specific program / path
 ```
@@ -32,7 +32,7 @@ jobs:
         continue-on-error: false  # set to true if you don't want to fail jobs
         uses: silas-x/soteria-action@v0.3
         with:                     # remove if not passing arguments below
-          solana-version: "1.9.4" # not required
+          solana-version: "1.9.5" # not required
           run-mode: "-analyzeAll" # not required
           cargo-com: "."          # not required
           program-path: "."       # not required
