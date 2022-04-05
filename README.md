@@ -15,7 +15,7 @@ program-path   (default: ".")            - Add path to a specific program / path
 You can use this Action as part of your project by creating an Action as follows:
 ```
 name: Soteria Audit
-# Update this to match your branch names and requirements
+                                           # Update to match your branch names and requirements
 on:
   push:
     branches: main
@@ -49,12 +49,10 @@ jobs:
  Please raise an issue for suggestions and any bugs related to the Action.
  
  If you feel this Action has helped securing your project and its user's funds, donations are welcome to this SOL address: _Db4eiNsEXQ5gUZsxGWchj39CXQZ1ZGuuaS4MdSobVhtT_
- 
- Made with :heart: by silas
 
  ## Responsibility :call_me_hand:
- I am not the author of Soteria. I can't answer support questions related to the tool, but I may be able to help connecting you.
+ I am not the author of the Soteria tool. I can't answer support questions related to the tool, but I may be able to help connecting you.
  I take no responsibility of the accuracy of it, or the outcomes of running this Action. You should not solely rely on the the results of running this
  tool, as no tool will be able to provide assurance of security or completeness of a smart contract. 
- Use at own risk and see licence note for further information.
+ Use at own risk and engage experts to peer review/formally audit your production contracts.
 
