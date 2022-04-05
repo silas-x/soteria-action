@@ -15,7 +15,7 @@ program-path   (default: ".")            - Add path to a specific program / path
 You can use this Action as part of your project by creating an Action as follows:
 ```
 name: Soteria Audit
-                                           # Update to match your branch names and requirements
+                                          # Update to match your branch names and requirements
 on:
   push:
     branches: main
