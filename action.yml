@@ -1,4 +1,4 @@
-name: Soteria Scan
+name: Soteria Audit
 author: silas
 description: >
   Test Solana smart contract code for common vulnerabilities
@@ -9,7 +9,7 @@ inputs:
   solana-version:
     description: "Choose your Solana version to build with"
     required: false
-    default: "1.9.5"
+    default: "1.9.14"
   run-mode:
     description: "Command line options for Soteria"
     required: false
@@ -19,7 +19,7 @@ inputs:
     required: false
     default: "."
   program-path:
-    description: "Configure the job to run tests against a program in a subfolder to the root"
+    description: "Configure the job to run tests against a program in a subfolder"
     required: false
     default: "."
 
