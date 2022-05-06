@@ -1,4 +1,4 @@
-name: Soteria Free Audit
+name: Soteria Audit Action
 author: silas-x
 description: >
   Test Solana smart contract code for common vulnerabilities
@@ -9,7 +9,7 @@ inputs:
   solana-version:
     description: "Choose your Solana version to build with"
     required: false
-    default: "1.9.14"
+    default: "1.9.20"
   run-mode:
     description: "Command line options for Soteria"
     required: false
