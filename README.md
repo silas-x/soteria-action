@@ -5,8 +5,8 @@ This action enables you to run the Solana smart contract vulnerability scanning 
 The action takes the following inputs, but note that they are **not** required. 
 If this is new to you, just run the action without passing any arguments!
 ```
-solana-version (default: "1.9.20")       - Check Solana releases if needed (https://github.com/solana-labs/solana/releases)
-run-mode       (default: "-analyseAll")  - Runs the tool against all programs
+solana-version (default: "1.14.11")       - Check Solana releases if needed (https://github.com/solana-labs/solana/releases)
+run-mode       (default: "-analyzeAll")  - Runs the tool against all programs
 cargo-com      (default: ".")            - Shortcut for build command
 program-path   (default: ".")            - Add path to a specific program / path
 ```
@@ -27,12 +27,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check-out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Soteria Audit
         continue-on-error: false          # set to true if you don't want to fail jobs
         uses: silas-x/soteria-action@main
         with:                             # remove if not passing arguments below
-          solana-version: "1.9.20"        # not required
+          solana-version: "1.14.11"       # not required
           run-mode: "-analyzeAll"         # not required
           cargo-com: "."                  # not required
           program-path: "."               # not required

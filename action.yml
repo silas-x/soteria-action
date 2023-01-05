@@ -9,7 +9,7 @@ inputs:
   solana-version:
     description: "Choose your Solana version to build with"
     required: false
-    default: "1.9.20"
+    default: "1.14.11"
   run-mode:
     description: "Command line options for Soteria"
     required: false
