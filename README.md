@@ -6,7 +6,7 @@ The action takes the following inputs, but note that they are **not** required.
 If this is new to you, just run the action without passing any arguments!
 ```
 solana-version (default: "1.14.11")       - Check Solana releases if needed (https://github.com/solana-labs/solana/releases)
-run-mode       (default: "-analyseAll")  - Runs the tool against all programs
+run-mode       (default: "-analyzeAll")  - Runs the tool against all programs
 cargo-com      (default: ".")            - Shortcut for build command
 program-path   (default: ".")            - Add path to a specific program / path
 ```
